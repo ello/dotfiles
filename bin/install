@@ -1,0 +1,91 @@
+#!/bin/bash
+set -e
+
+init() {
+  $([[ $1 == "" ]] && echo ./bin/help install || echo run $@)
+  exit 0
+}
+
+run() {
+  for cmd in $@; do $cmd; done
+}
+
+
+## Public
+
+#/ vim             Installs .vimrc, .vim/, and clones bundles via pathogen
+vim() {
+  printf "%sInstalling vimfiles..\n"
+  vim_directories
+  vim_symlinks
+  vim_pathogen
+  vim_bundles
+}
+
+
+#/ bash            Installs .bash_profile, .bashrc and .inputrc
+bash() {
+  for file in "bash_profile" "bashrc" "inputrc"; do
+    ln -sfv `pwd`/dots/$file $HOME/.$file
+  done
+}
+
+
+#/ dots            Installs ~/ .gemrc .gitconfig .gitignore .jshintrc .bundle/
+dots() {
+  if [[ ! -d $HOME/.bundle ]]; then mkdir $HOME/.bundle;fi
+  ln -sfv `pwd`/dots/bundle/config $HOME/.bundle/config
+
+  for file in "gemrc" "gitconfig" "gitignore" "jshintrc"; do
+    ln -sfv `pwd`/dots/$file $HOME/.$file
+  done
+}
+
+
+#/ world           Runs all of the install commands
+world() {
+  bash
+  dots
+  vim
+}
+
+
+## Internal (but go for it)
+
+vim_directories() {
+  if [[ -d $HOME/.vim ]]; then rm -rf $HOME/.vim; fi
+  for dir in "autoload" "bundle" "colors" "tmp/swap" "tmp/yankring" "tmp/ctrlp"; do
+    mkdir -pv $HOME/.vim/$dir
+  done
+}
+
+
+vim_symlinks() {
+  ln -sfv `pwd`/dots/vimrc $HOME/.vimrc
+  ln -sfv `pwd`/dots/vim/colors/polarized.vim $HOME/.vim/colors/
+}
+
+
+vim_pathogen() {
+  printf "%sDownloading pathogen..\n"
+  curl -#LSo $HOME/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+}
+
+
+vim_bundles() {
+  local bundles=$(cat `pwd`/packages/bundles.txt)
+  if [[ -d $HOME/.vim/bundle ]]; then
+    rm -rf $HOME/.vim/bundle
+    mkdir -pv $HOME/.vim/bundle
+  fi
+  cd $HOME/.vim/bundle/
+  for bundle in $bundles; do
+    git clone https://github.com/$bundle.git
+  done
+  cd `pwd`
+}
+
+
+# go..
+init $@
+

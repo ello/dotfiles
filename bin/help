@@ -1,0 +1,74 @@
+#!/bin/bash
+set -e
+
+init() {
+  $([[ $1 == "" ]] && echo world || echo run $@)
+  exit 0
+}
+
+run() {
+  for cmd in $@; do $cmd; done
+}
+
+
+## Public
+
+#/ install         List commands for the install program
+install() {
+  print_usage "install"
+}
+
+
+#/ uninstall       List commands for the uninstall program
+uninstall() {
+  print_usage "uninstall"
+}
+
+
+#/ update          List commands for the update program
+update() {
+  print_usage "update"
+}
+
+
+
+#/ help            List commands for the help program
+help() {
+  print_usage "help"
+}
+
+
+#/ world           List each command in all programs
+world() {
+  install
+  uninstall
+  update
+  help
+}
+
+
+makefile() {
+  printf "%sUsage: make TARGET\n"
+  cat ./Makefile | grep '^#\/' | sed "s/#\///g" | while read line; do
+    printf "%2s$line\n"
+  done
+  printf "%s\n"
+}
+
+
+## Internal
+
+print_usage() {
+  for program in $@; do
+    printf "%sUsage: bin/$program COMMAND\n"
+    cat ./bin/$program | grep '^#\/' | sed "s/#\///g" | while read line; do
+      printf "%2s$line\n"
+    done
+    printf "%s\n"
+  done
+}
+
+
+# go..
+init $@
+

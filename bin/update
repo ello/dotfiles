@@ -1,0 +1,32 @@
+#!/bin/bash
+set -e
+
+init() {
+  $([[ $1 == "" ]] && echo ./bin/help update || echo run $@)
+  printf "%s\nupdate complete.\n"
+  exit 0
+}
+
+run() {
+  for cmd in $@; do $cmd; done
+}
+
+
+## Public
+
+#/ vim             Updates pathogen and bundles
+vim() {
+  ./bin/install vim_pathogen vim_bundles
+}
+
+
+
+#/ world           Runs all of the update commands
+world() {
+  vim
+}
+
+
+# go..
+init $@
+

@@ -1,0 +1,43 @@
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  ui = auto
+[core]
+  excludesfile = ~/.gitignore
+[alias]
+  c = commit -a
+  a = add
+  di = diff
+  dic = diff --cached
+  pl = pull
+  ps = push
+  pr = pull --rebase
+  st = status
+  out = log origin..HEAD
+  br = branch
+  co = checkout
+  del = !FILES=$(git ls-files --deleted) && git rm $FILES
+  msg = commit --allow-empty -m
+  glog = log --pretty='format:%d %Cgreen%h%Creset %an - %s' --graph
+[help]
+  autocorrect = 1
+[push]
+  default = matching
+[branch]
+  autosetupmerge = always
+  autosetuprebase = always
+[merge]
+  tool = chdiff
+  trustExitCode = 0
+[mergetool "filemerge"]
+  cmd = /usr/bin/env chdiff --wait "$LOCAL" "$REMOTE"
+  keepBackup = false
+  trustExitCode = false
+[rerere]
+  enabled = 1
+
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f

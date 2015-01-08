@@ -1,0 +1,52 @@
+#!/bin/bash
+set -e
+
+init() {
+  $([[ $1 == "" ]] && echo ./bin/help uninstall || echo run $@)
+  printf "%s\nuninstall complete.\n"
+  exit 0
+}
+
+run() {
+  for cmd in $@; do $cmd; done
+}
+
+
+## Public
+
+#/ vim             Removes .vimrc, .vim/
+vim() {
+  rm -v $HOME/.vimrc
+  rm -rfv $HOME/.vim
+}
+
+
+#/ bash            Removes .bash_profile, .bashrc and .inputrc
+bash() {
+  for file in "bash_profile" "bashrc" "inputrc"; do
+    rm -v $HOME/.$file
+  done
+}
+
+
+#/ dots            Removes ~/ .gemrc .gitconfig .gitignore .jshintrc .bundle/
+dots() {
+  rm -rfv $HOME/.bundle
+
+  for file in "gemrc" "gitconfig" "gitignore" "jshintrc"; do
+    rm -v $HOME/.$file
+  done
+}
+
+
+#/ world           Runs all of the uninstall commands
+world() {
+  vim
+  dots
+  bash
+}
+
+
+# go..
+init $@
+

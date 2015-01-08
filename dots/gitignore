@@ -1,0 +1,17 @@
+.DS_Store
+.idea
+.svn
+*.swp
+.sass-cache
+.rake_cache
+typescript
+vendor/bundle
+.bundle/
+tmp/**/*
+log/**/*
+tmp/*
+log/*
+.powenv
+.env
+
+

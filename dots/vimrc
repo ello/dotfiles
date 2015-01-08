@@ -1,0 +1,185 @@
+" Disable vi compatibility
+set nocompatible
+
+" Use Pathogen to manage bundles
+execute pathogen#infect()
+execute pathogen#helptags()
+
+" Preferences
+" -----------------------------------------------------------------------------
+filetype plugin indent on
+syntax enable
+set encoding=utf-8
+set autoindent
+set autoread
+set autowrite
+set backspace=2
+set clipboard=unnamed
+set complete-=i
+set directory=~/.vim/tmp/swap/
+set display+=lastline
+set expandtab
+set fileformats+=mac
+set foldlevelstart=0
+set foldmethod=marker
+set grepprg=ack
+set hidden
+set history=1000
+set hlsearch
+set ignorecase
+set incsearch
+set laststatus=2
+set list
+set listchars=tab:▸\ ,eol:¬,trail:·
+set mouse=a
+set nobackup
+set noerrorbells
+set noshowcmd
+set nostartofline
+set novisualbell
+set nowrap
+set nrformats-=octal
+set number
+set pumheight=20
+set ruler
+set scrolloff=3
+set sessionoptions-=options
+set shiftround
+set shiftwidth=2
+set showmatch
+set sidescrolloff=3
+set smartcase
+set smartindent
+set smarttab
+set softtabstop=2
+set splitright splitbelow
+set tabstop=2
+set title
+set ttimeout
+set ttimeoutlen=50
+set ttyfast
+set undolevels=1000
+set wildignore+=*.DS_Store
+set wildmenu
+set wildmode=longest:full,full
+set completeopt=longest,menu
+
+if has("balloon_eval") && has("unix")
+  set ballooneval
+endif
+
+if &t_Co == 8 && $TERM !~# '^linux'
+  set t_Co=16
+endif
+
+
+
+" Plugin configurations
+" -----------------------------------------------------------------------------
+runtime! macros/matchit.vim
+
+
+if executable('ag')
+  let g:agprg='ag --nogroup --column'
+  set grepprg=ag\ --nogroup\ --nocolor
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore vendor/bundle -g ""'
+  let g:ctrlp_use_caching = 0
+endif
+
+let g:ctrlp_by_filename=1
+let g:ctrlp_extensions=['line']
+let g:ctrlp_cache_dir=$HOME.'/.vim/tmp/ctrlp/'
+let g:ctrlp_custom_ignore='vendor/bundle\|.sass-cache\|.bundle\|tmp\|.git$'
+
+let g:netrw_liststyle=3
+
+let g:NERDTreeWinSize=40
+let g:NERDTreeMinimalUI=1
+let g:NERDTreeAutoDeleteBuffer=1
+
+let g:SuperTabLongestEnhanced=1
+let g:SuperTabLongestHighlight=1
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
+let g:syntastic_auto_loc_list=1
+let g:syntastic_mode_map={'mode': 'active','passive_filetypes': ['scss', 'sass']}
+let g:syntastic_html_tidy_inline_tags=['svg', 'path', 'circle']
+let g:syntastic_html_tidy_ignore_errors = ["<title> isn't allowed", ' before <title>']
+
+let g:yankring_window_height=10
+let g:yankring_history_dir=$HOME.'/.vim/tmp/yankring/'
+
+let g:indexed_search_show_index_mappings=0
+let g:indexed_search_colors=0
+let g:coffee_compile_vert=1
+
+
+" Key mapping
+" -----------------------------------------------------------------------------
+" RSI reduction
+nnoremap j gj
+nnoremap k gk
+
+" Visually select the text that was last edited/pasted
+nnoremap gV `[v`]
+
+" Move between splits
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+" Function keys
+let g:ctrlp_map='<F1>'
+noremap <F2> :NERDTreeToggle<cr>
+noremap <F3> :CtrlPBuffer<cr>
+noremap <F4> :Ag! --ignore vendor/bundle<space>
+noremap <F11> :YRShow<cr>
+" <F12> is reserved for rendering markdown previews
+
+" NERDTree in a buffer (like netrw)
+nnoremap <silent>- :silent edit %:p:h<cr>
+nnoremap <silent>_ :silent edit .<cr>
+
+" Clear the search highlight
+noremap <silent><leader>\ :nohlsearch<cr>
+
+" Remove whitespace
+noremap <silent><leader>CW :%s/\s\+$//<cr>:let @/=''<cr>:nohlsearch<cr>
+
+" Yank/paste contents using an unnamed register
+vnoremap <silent><leader>y "xy
+noremap <silent><leader>p "xp
+
+
+" File types
+" -----------------------------------------------------------------------------
+
+if has("autocmd")
+  augroup FTOptions
+    autocmd!
+    autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+    autocmd FileType markdown,text,txt setlocal tw=80 linebreak nolist wrap spell
+    autocmd FileType markdown noremap <buffer> <F12> :MDP<cr>:redraw!<cr>
+    autocmd FileType swift setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType css,scss,sass setlocal iskeyword+=-
+
+    " Abbreviations
+    autocmd FileType sass iabbrev <buffer> bgc background-color:
+    autocmd FileType coffee iabbrev <buffer> cdl console.log
+    autocmd FileType * iabbrev <buffer> lrm Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  augroup END
+endif
+
+" Theme
+" -----------------------------------------------------------------------------
+set background=dark
+colorscheme polarized
+
+
+" Load user config
+" -----------------------------------------------------------------------------
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
+
