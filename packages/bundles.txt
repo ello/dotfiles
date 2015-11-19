@@ -22,3 +22,4 @@ tpope/vim-surround
 tpope/vim-unimpaired
 nelstrom/vim-visual-star-search
 vim-scripts/YankRing.vim
+fatih/vim-go

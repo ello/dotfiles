@@ -164,6 +164,21 @@ if has("autocmd")
     autocmd FileType swift setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd FileType css,scss,sass setlocal iskeyword+=-
 
+    " vim-go keybindings
+    autocmd FileType go nmap <leader>r <Plug>(go-run)
+    autocmd FileType go nmap <leader>b <Plug>(go-build)
+    autocmd FileType go nmap <leader>t <Plug>(go-test)
+    autocmd FileType go nmap <leader>c <Plug>(go-coverage)
+    autocmd FileType go nmap <Leader>ds <Plug>(go-def-split)
+    autocmd FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+    autocmd FileType go nmap <Leader>dt <Plug>(go-def-tab)
+    autocmd FileType go nmap <Leader>gd <Plug>(go-doc)
+    autocmd FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+    autocmd FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+    autocmd FileType go nmap <Leader>s <Plug>(go-implements)
+    autocmd FileType go nmap <Leader>i <Plug>(go-info)
+    autocmd FileType go nmap <Leader>e <Plug>(go-rename)
+
     " Abbreviations
     autocmd FileType sass iabbrev <buffer> bgc background-color:
     autocmd FileType coffee iabbrev <buffer> cdl console.log
