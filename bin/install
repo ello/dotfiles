@@ -31,7 +31,7 @@ bash() {
 }
 
 
-#/ dots            Installs ~/ .gemrc .gitconfig .gitignore .netrc .gem/credentials .bundle/
+#/ dots            Installs ~/ .gemrc .gitconfig .gitignore .bundle/
 dots() {
   if [[ ! -d $HOME/.bundle ]]; then mkdir $HOME/.bundle;fi
   ln -sfv "`pwd`/dots/bundle/config" $HOME/.bundle/config
