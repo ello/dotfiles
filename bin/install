@@ -73,7 +73,7 @@ vim_pathogen() {
 
 
 vim_bundles() {
-  local bundles=$(cat `pwd`/packages/bundles.txt)
+  local bundles=$(cat "`pwd`/Bundles.txt")
   if [[ -d $HOME/.vim/bundle ]]; then
     rm -rf $HOME/.vim/bundle
     mkdir -pv $HOME/.vim/bundle
@@ -82,7 +82,7 @@ vim_bundles() {
   for bundle in $bundles; do
     git clone https://github.com/$bundle.git
   done
-  cd `pwd`
+  cd "`pwd`"
 }
 
 
