@@ -108,6 +108,7 @@ alias hi='history | tail -50'
 alias be='bundle exec'
 alias ..="cd ../"
 
+alias git-prune='git remote | xargs -n1 git remote prune'
 
 # Completions
 # ------------------------------------------
