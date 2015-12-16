@@ -29,11 +29,11 @@ bash() {
 }
 
 
-#/ dots            Removes ~/ .gemrc .gitconfig .gitignore .jshintrc .bundle/
+#/ dots            Removes ~/ .gemrc .gitconfig .gitignore .bundle/
 dots() {
   rm -rfv $HOME/.bundle
 
-  for file in "gemrc" "gitconfig" "gitignore" "jshintrc"; do
+  for file in "gemrc" "gitconfig" "gitignore"; do
     rm -v $HOME/.$file
   done
 }
