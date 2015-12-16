@@ -112,13 +112,19 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_mode_map={'mode': 'active','passive_filetypes': ['scss', 'sass']}
 let g:syntastic_html_tidy_inline_tags=['svg', 'path', 'circle']
 let g:syntastic_html_tidy_ignore_errors = ["<title> isn't allowed", ' before <title>']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_args = "--rule 'no-console: 0'"
 
 let g:yankring_window_height=10
 let g:yankring_history_dir=$HOME.'/.vim/tmp/yankring/'
 
 let g:indexed_search_show_index_mappings=0
 let g:indexed_search_colors=0
+
+let g:javascript_enable_domhtmlcss=1
+let g:jsx_ext_required=0
 let g:coffee_compile_vert=1
+
 
 
 " Key mapping
@@ -162,6 +168,11 @@ noremap <silent><leader>p "xp
 
 " File types
 " -----------------------------------------------------------------------------
+func Eatchar(pat)
+  let c = nr2char(getchar(0))
+  return (c =~ a:pat) ? '' : c
+endfunc
+
 
 if has("autocmd")
   augroup FTOptions
@@ -170,7 +181,6 @@ if has("autocmd")
     autocmd FileType markdown,text,txt setlocal tw=80 linebreak nolist wrap spell
     autocmd FileType markdown noremap <buffer> <F12> :MDP<cr>:redraw!<cr>
     autocmd FileType swift setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd FileType css,scss,sass setlocal iskeyword+=-
 
     " vim-go keybindings
     autocmd FileType go nmap <leader>r <Plug>(go-run)
@@ -190,6 +200,7 @@ if has("autocmd")
     " Abbreviations
     autocmd FileType sass iabbrev <buffer> bgc background-color:
     autocmd FileType coffee iabbrev <buffer> cdl console.log
+    autocmd FileType javascript iabbrev <buffer> cdl console.log()<Left><C-R>=Eatchar('\s')<CR>
     autocmd FileType * iabbrev <buffer> lrm Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   augroup END
 endif
