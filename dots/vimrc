@@ -102,6 +102,12 @@ let g:SuperTabLongestEnhanced=1
 let g:SuperTabLongestHighlight=0
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
+" Open quick fix and location windows with ctrlp commands
+let g:qfenter_enable_autoquickfix=0
+let g:qfenter_vopen_map = ['<C-v>']
+let g:qfenter_hopen_map = ['<C-CR>', '<C-s>', '<C-x>']
+let g:qfenter_topen_map = ['<C-t>']
+
 let g:syntastic_auto_loc_list=1
 let g:syntastic_mode_map={'mode': 'active','passive_filetypes': ['scss', 'sass']}
 let g:syntastic_html_tidy_inline_tags=['svg', 'path', 'circle']
