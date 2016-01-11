@@ -62,11 +62,6 @@ well put it to good use.
 - From the drop down, select `^ Control` under the `Caps Lock` setting
 - In the `Select Keyboard` drop down, set it for both internal and external keyboards
 
-### Fonts
-
-You look at text all damn day. Do yourself a favor and install the
-[MesloGM font][font] and rock the medium variant, size `12`.
-
 ### Mouse support for Terminal
 
 To get full mouse support (scrolling, clicking, etc...) within Terminal
@@ -74,7 +69,6 @@ Vim, install the [SIMBL][simbl] [MouseTerm][mouseterm] plug-in. It brings the
 goodness.
 
 <!-- Markdown links -->
-[font]: https://github.com/andreberg/Meslo-Font
 [mouseterm]: http://bitheap.org/mouseterm/
 [osxdefaults]: http://mths.be/osx
 [rbenv]: https://github.com/sstephenson/rbenv

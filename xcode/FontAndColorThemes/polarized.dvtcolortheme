@@ -5,7 +5,7 @@
 	<key>DVTConsoleDebuggerInputTextColor</key>
 	<string>0.437649 0.509511 0.517715 1</string>
 	<key>DVTConsoleDebuggerInputTextFont</key>
-	<string>Menlo-Regular - 11.0</string>
+	<string>Menlo-Bold - 11.0</string>
 	<key>DVTConsoleDebuggerOutputTextColor</key>
 	<string>0.437649 0.509511 0.517715 1</string>
 	<key>DVTConsoleDebuggerOutputTextFont</key>
@@ -21,7 +21,7 @@
 	<key>DVTConsoleExectuableOutputTextColor</key>
 	<string>0.437649 0.509511 0.517715 1</string>
 	<key>DVTConsoleExectuableOutputTextFont</key>
-	<string>Menlo-Regular - 11.0</string>
+	<string>Menlo-Bold - 11.0</string>
 	<key>DVTConsoleTextBackgroundColor</key>
 	<string>0.0980392 0.0980392 0.0980392 1</string>
 	<key>DVTConsoleTextInsertionPointColor</key>
@@ -30,6 +30,40 @@
 	<string>0.32076 0.406575 0.440224 0.45</string>
 	<key>DVTDebuggerInstructionPointerColor</key>
 	<string>0.653506 0.472476 0 1</string>
+	<key>DVTMarkupTextBackgroundColor</key>
+	<string>0.08 0.195451 0.23153 1</string>
+	<key>DVTMarkupTextBorderColor</key>
+	<string>0.1536 0.259815 0.293007 1</string>
+	<key>DVTMarkupTextCodeFont</key>
+	<string>Menlo-Regular - 10.0</string>
+	<key>DVTMarkupTextEmphasisColor</key>
+	<string>0.513725 0.580392 0.588235 1</string>
+	<key>DVTMarkupTextEmphasisFont</key>
+	<string>.AppleSystemUIFontItalic - 10.0</string>
+	<key>DVTMarkupTextLinkColor</key>
+	<string>1 0.501961 1 1</string>
+	<key>DVTMarkupTextLinkFont</key>
+	<string>.AppleSystemUIFont - 10.0</string>
+	<key>DVTMarkupTextNormalColor</key>
+	<string>0.513725 0.580392 0.588235 1</string>
+	<key>DVTMarkupTextNormalFont</key>
+	<string>.AppleSystemUIFont - 10.0</string>
+	<key>DVTMarkupTextOtherHeadingColor</key>
+	<string>0.513725 0.580392 0.588235 0.5</string>
+	<key>DVTMarkupTextOtherHeadingFont</key>
+	<string>.AppleSystemUIFont - 14.0</string>
+	<key>DVTMarkupTextPrimaryHeadingColor</key>
+	<string>0.513725 0.580392 0.588235 1</string>
+	<key>DVTMarkupTextPrimaryHeadingFont</key>
+	<string>.AppleSystemUIFont - 24.0</string>
+	<key>DVTMarkupTextSecondaryHeadingColor</key>
+	<string>0.513725 0.580392 0.588235 1</string>
+	<key>DVTMarkupTextSecondaryHeadingFont</key>
+	<string>.AppleSystemUIFont - 18.0</string>
+	<key>DVTMarkupTextStrongColor</key>
+	<string>0.513725 0.580392 0.588235 1</string>
+	<key>DVTMarkupTextStrongFont</key>
+	<string>.AppleSystemUIFontBold - 10.0</string>
 	<key>DVTSourceTextBackground</key>
 	<string>0 0.12549 0.164706 1</string>
 	<key>DVTSourceTextBlockDimBackgroundColor</key>
@@ -92,51 +126,51 @@
 	<key>DVTSourceTextSyntaxFonts</key>
 	<dict>
 		<key>xcode.syntax.attribute</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.character</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.comment</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.comment.doc</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.comment.doc.keyword</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.class</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.class.system</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.constant</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.constant.system</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.function</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.function.system</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.macro</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.macro.system</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.type</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.type.system</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.variable</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.identifier.variable.system</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.keyword</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.number</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.plain</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.preprocessor</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.string</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 		<key>xcode.syntax.url</key>
-		<string>MesloLGM - 12.0</string>
+		<string>Menlo-Regular - 12.0</string>
 	</dict>
 </dict>
 </plist>

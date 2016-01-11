@@ -26,18 +26,18 @@ vim() {
 #/ bash            Installs .bash_profile, .bashrc and .inputrc
 bash() {
   for file in "bash_profile" "bashrc" "inputrc"; do
-    ln -sfv `pwd`/dots/$file $HOME/.$file
+    ln -sfv "`pwd`/dots/$file" $HOME/.$file
   done
 }
 
 
-#/ dots            Installs ~/ .gemrc .gitconfig .gitignore .jshintrc .bundle/
+#/ dots            Installs ~/ .gemrc .gitconfig .gitignore .bundle/
 dots() {
   if [[ ! -d $HOME/.bundle ]]; then mkdir $HOME/.bundle;fi
-  ln -sfv `pwd`/dots/bundle/config $HOME/.bundle/config
+  ln -sfv "`pwd`/dots/bundle/config" $HOME/.bundle/config
 
-  for file in "gemrc" "gitconfig" "gitignore" "jshintrc"; do
-    ln -sfv `pwd`/dots/$file $HOME/.$file
+  for file in "gemrc" "gitconfig" "gitignore"; do
+    ln -sfv "`pwd`/dots/$file" $HOME/.$file
   done
 }
 
@@ -61,8 +61,8 @@ vim_directories() {
 
 
 vim_symlinks() {
-  ln -sfv `pwd`/dots/vimrc $HOME/.vimrc
-  ln -sfv `pwd`/dots/vim/colors/polarized.vim $HOME/.vim/colors/
+  ln -sfv "`pwd`/dots/vimrc" $HOME/.vimrc
+  ln -sfv "`pwd`/dots/vim/colors/polarized.vim" $HOME/.vim/colors/
 }
 
 
@@ -73,7 +73,7 @@ vim_pathogen() {
 
 
 vim_bundles() {
-  local bundles=$(cat `pwd`/packages/bundles.txt)
+  local bundles=$(cat "`pwd`/Bundles.txt")
   if [[ -d $HOME/.vim/bundle ]]; then
     rm -rf $HOME/.vim/bundle
     mkdir -pv $HOME/.vim/bundle
@@ -82,7 +82,7 @@ vim_bundles() {
   for bundle in $bundles; do
     git clone https://github.com/$bundle.git
   done
-  cd `pwd`
+  cd "`pwd`"
 }
 
 

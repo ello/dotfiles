@@ -1,8 +1,3 @@
-#/ HELP            List all bin commands and make targets
-help:
-	@./bin/help world makefile
-
-
 #/ update          Runs all of the update commands
 update:
 	@./bin/update world
@@ -13,5 +8,10 @@ install:
 	@./bin/install world
 
 
-.PHONY: help update install
+#/ help            List all bin commands and make targets
+help:
+	@./bin/help world makefile
+
+
+.PHONY: update install help
 
