@@ -69,8 +69,8 @@ Vim, install the [SIMBL][simbl] [MouseTerm][mouseterm] plug-in. It brings the
 goodness.
 
 <!-- Markdown links -->
-[mouseterm]: http://bitheap.org/mouseterm/
+[mouseterm]: https://bitheap.org/mouseterm/
 [osxdefaults]: http://mths.be/osx
-[rbenv]: https://github.com/sstephenson/rbenv
+[rbenv]: https://github.com/rbenv/rbenv
 [simbl]: http://www.culater.net/software/SIMBL/SIMBL.php
 
