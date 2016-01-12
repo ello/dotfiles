@@ -3,7 +3,6 @@
 
 We &hearts; the Vim.
 
-
 ## Fresh install
 **Warning this will blow away any vim/bash setups you have currently. You may
 want to back up existing files.**
@@ -13,7 +12,6 @@ want to back up existing files.**
 - `brew install git`
 - cd to the dotfiles directory and `bin/install world`
 - Set reasonable [OSX defaults][osxdefaults]
-
 
 ## Settings
 
@@ -37,18 +35,22 @@ required to identify who you are.
 
 The default Bash settings support the [rbenv][rbenv] environment.
 
-### Override vim settings
+### Override Vim settings
 
 To override or add any additional settings create a `~/.vimrc.local` file and
 add any customization.
+
+Vim is setup with [vim-plug][vim-plug] as it's plugin manager. The default
+plugins are enabled within the [.vimrc][vimrc] file. To load localized plugins
+add them to a `~/.vimrc.bundles` file.
 
 ## Tips
 
 ### Install polarized terminal theme
 
-Included is a `polarized.terminal` color theme. Import this theme
-into Apple's Terminal.app and set it as the default.
-
+Included is a `polarized.terminal` color theme. Import this theme into Apple's
+Terminal.app and set it as the default. You can also find it at the original
+[polarized][polarized] repository.
 
 ### Turn caps lock into the control key
 
@@ -65,12 +67,15 @@ well put it to good use.
 ### Mouse support for Terminal
 
 To get full mouse support (scrolling, clicking, etc...) within Terminal
-Vim, install the [SIMBL][simbl] [MouseTerm][mouseterm] plug-in. It brings the
-goodness.
+Vim, install the [SIMBL][simbl] [MouseTerm][mouseterm] plug-in.
+
 
 <!-- Markdown links -->
 [mouseterm]: https://bitheap.org/mouseterm/
 [osxdefaults]: http://mths.be/osx
 [rbenv]: https://github.com/rbenv/rbenv
 [simbl]: http://www.culater.net/software/SIMBL/SIMBL.php
+[vim-plug]: https://github.com/junegunn/vim-plug
+[polarized]: https://github.com/mkitt/polarized
+[vimrc]: /dots/vimrc
 

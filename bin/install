@@ -10,18 +10,20 @@ run() {
   for cmd in $@; do $cmd; done
 }
 
-
-## Public
-
-#/ vim             Installs .vimrc, .vim/, and clones bundles via pathogen
+#/ vim             Installs .vimrc, .vim/ and vim-plug
 vim() {
   printf "%sInstalling vimfiles..\n"
-  vim_directories
-  vim_symlinks
-  vim_pathogen
-  vim_bundles
+  if [[ -d $HOME/.vim ]]; then rm -rf $HOME/.vim; fi
+  for dir in "tmp/ctrlp" "tmp/swap" "tmp/yankring"; do
+    mkdir -pv $HOME/.vim/$dir
+  done
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  ln -sfv "`pwd`/dots/vimrc" $HOME/.vimrc
+  printf "%s----------------------------------------\n"
+  printf "%sRun :PlugInstall from within Vim\n"
+  printf "%s----------------------------------------\n"
 }
-
 
 #/ bash            Installs .bash_profile, .bashrc and .inputrc
 bash() {
@@ -30,17 +32,14 @@ bash() {
   done
 }
 
-
 #/ dots            Installs ~/ .gemrc .gitconfig .gitignore .bundle/
 dots() {
   if [[ ! -d $HOME/.bundle ]]; then mkdir $HOME/.bundle;fi
   ln -sfv "`pwd`/dots/bundle/config" $HOME/.bundle/config
-
   for file in "gemrc" "gitconfig" "gitignore"; do
     ln -sfv "`pwd`/dots/$file" $HOME/.$file
   done
 }
-
 
 #/ world           Runs all of the install commands
 world() {
@@ -48,43 +47,6 @@ world() {
   dots
   vim
 }
-
-
-## Internal (but go for it)
-
-vim_directories() {
-  if [[ -d $HOME/.vim ]]; then rm -rf $HOME/.vim; fi
-  for dir in "autoload" "bundle" "colors" "tmp/swap" "tmp/yankring" "tmp/ctrlp"; do
-    mkdir -pv $HOME/.vim/$dir
-  done
-}
-
-
-vim_symlinks() {
-  ln -sfv "`pwd`/dots/vimrc" $HOME/.vimrc
-  ln -sfv "`pwd`/dots/vim/colors/polarized.vim" $HOME/.vim/colors/
-}
-
-
-vim_pathogen() {
-  printf "%sDownloading pathogen..\n"
-  curl -#LSo $HOME/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
-}
-
-
-vim_bundles() {
-  local bundles=$(cat "`pwd`/Bundles.txt")
-  if [[ -d $HOME/.vim/bundle ]]; then
-    rm -rf $HOME/.vim/bundle
-    mkdir -pv $HOME/.vim/bundle
-  fi
-  cd $HOME/.vim/bundle/
-  for bundle in $bundles; do
-    git clone https://github.com/$bundle.git
-  done
-  cd "`pwd`"
-}
-
 
 # go..
 init $@

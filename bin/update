@@ -11,21 +11,21 @@ run() {
   for cmd in $@; do $cmd; done
 }
 
-
-## Public
-
-#/ vim             Updates pathogen and bundles
+#/ vim             Message instructions to update the Vim plugins
 vim() {
-  ./bin/install vim_pathogen vim_bundles
+  printf "%s----------------------------------------\n"
+  printf "%sUpdate Vim plugins:\n"
+  printf "%s:PlugClean!\n"
+  printf "%s:PlugUpgrade\n"
+  printf "%s:PlugUpdate\n"
+  printf "%s:PlugDiff\n"
+  printf "%s----------------------------------------\n"
 }
-
-
 
 #/ world           Runs all of the update commands
 world() {
   vim
 }
-
 
 # go..
 init $@
