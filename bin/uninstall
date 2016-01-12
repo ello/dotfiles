@@ -11,15 +11,11 @@ run() {
   for cmd in $@; do $cmd; done
 }
 
-
-## Public
-
 #/ vim             Removes .vimrc, .vim/
 vim() {
   rm -v $HOME/.vimrc
   rm -rfv $HOME/.vim
 }
-
 
 #/ bash            Removes .bash_profile, .bashrc and .inputrc
 bash() {
@@ -28,16 +24,13 @@ bash() {
   done
 }
 
-
 #/ dots            Removes ~/ .gemrc .gitconfig .gitignore .bundle/
 dots() {
   rm -rfv $HOME/.bundle
-
   for file in "gemrc" "gitconfig" "gitignore"; do
     rm -v $HOME/.$file
   done
 }
-
 
 #/ world           Runs all of the uninstall commands
 world() {
@@ -45,7 +38,6 @@ world() {
   dots
   bash
 }
-
 
 # go..
 init $@
