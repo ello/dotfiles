@@ -131,7 +131,6 @@ let g:NERDTreeMapUpdir='-'
 
 let g:SuperTabLongestEnhanced=1
 let g:SuperTabLongestHighlight=0
-let g:SuperTabDefaultCompletionType="<c-n>"
 
 " Open quick fix and location windows with ctrlp commands
 let g:qfenter_enable_autoquickfix=0
