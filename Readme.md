@@ -43,6 +43,10 @@ Vim is setup with [vim-plug][vim-plug] as it's plugin manager. The default
 plugins are enabled within the [.vimrc][vimrc] file. To load localized plugins
 add them to a `~/.vimrc.bundles` file.
 
+#### Patch SuperTab inserts new line bug
+There is an [issue with supertab][st162] that effects our setup. Applying the
+patch listed in the [issue][st162] gets around it for now. [Related][st158].
+
 ## Tips
 
 ### Install polarized terminal theme
@@ -77,4 +81,6 @@ Vim, install the [SIMBL][simbl] [MouseTerm][mouseterm] plug-in.
 [vim-plug]: https://github.com/junegunn/vim-plug
 [polarized]: https://github.com/mkitt/polarized
 [vimrc]: /dots/vimrc
+[st158]: https://github.com/ervandew/supertab/issues/158
+[st162]: https://github.com/ervandew/supertab/issues/162
 

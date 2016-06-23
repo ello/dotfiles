@@ -7,7 +7,7 @@ call plug#begin('~/.vim/plugged')
 
 " Editor
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'wincent/ferret'
+Plug 'dyng/ctrlsf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'mkitt/polarized'
 Plug 'yssl/QFEnter'
@@ -31,7 +31,6 @@ Plug 'othree/html5.vim'
 Plug 'keith/swift.vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'fatih/vim-go'
-Plug 'digitaltoad/vim-jade'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-rails'
@@ -62,7 +61,6 @@ set completeopt=longest,menu
 set directory=~/.vim/tmp/swap/
 set display+=lastline
 set expandtab
-set formatoptions+=j
 set hidden
 set history=1000
 set hlsearch
@@ -109,8 +107,18 @@ if &t_Co == 8 && $TERM !~# '^linux'
   set t_Co=16
 endif
 
+if v:version > 703 || v:version == 703 && has("patch541")
+  set formatoptions+=j
+endif
+
+func! s:AgHighlight(args)
+  let @/ = matchstr(a:args, "\\v(-)\@<!(\<)\@<=\\w+|['\"]\\zs.{-}\\ze['\"]")
+  call feedkeys(":let &hlsearch=1 \| echo \<CR>", 'n')
+endfunc
+
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
+  command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|botright cwindow|redraw!|:call s:AgHighlight(<q-args>)
   let g:ctrlp_user_command='ag -Q -l --nocolor --ignore vendor/bundle -g "" %s'
   let g:ctrlp_use_caching=0
 endif
@@ -120,7 +128,9 @@ let g:ctrlp_extensions=['line']
 let g:ctrlp_cache_dir=$HOME.'/.vim/tmp/ctrlp/'
 let g:ctrlp_custom_ignore='vendor/bundle\|.sass-cache\|.bundle\|tmp\|.git$'
 
-let g:FerretMap=0
+let g:ctrlsf_auto_close=0
+let g:ctrlsf_context='-C 1'
+let g:ctrlsf_populate_qflist=1
 
 let g:netrw_liststyle=3
 
@@ -139,11 +149,11 @@ let g:qfenter_hopen_map=['<C-CR>', '<C-s>', '<C-x>']
 let g:qfenter_topen_map=['<C-t>']
 
 let g:syntastic_auto_loc_list=1
-let g:syntastic_mode_map={'mode': 'active','passive_filetypes': ['scss', 'sass']}
-let g:syntastic_html_tidy_inline_tags=['svg', 'path', 'circle']
-let g:syntastic_html_tidy_ignore_errors=["<title> isn't allowed", ' before <title>']
 let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_javascript_eslint_args="--rule 'no-console: 0'"
+if executable('eslint_d')
+  let g:syntastic_javascript_eslint_exec='eslint_d'
+endif
 
 let g:yankring_window_height=10
 let g:yankring_history_dir=$HOME.'/.vim/tmp/yankring/'
@@ -153,6 +163,7 @@ let g:indexed_search_colors=0
 
 let g:javascript_enable_domhtmlcss=1
 let g:jsx_ext_required=0
+
 let g:coffee_compile_vert=1
 
 " Mappings
@@ -172,24 +183,25 @@ noremap <C-l> <C-w>l
 
 " Function keys
 let g:ctrlp_map='<F1>'
-noremap <F2> :NERDTreeToggle<cr>
-noremap <F3> :CtrlPBuffer<cr>
-nmap <F4> <Plug>(FerretAck)
-nmap <F5> <Plug>(FerretAckWord)
-vnoremap <F5> y:Ack -Q <C-r>=fnameescape(@")<cr><cr>
+noremap <F2> :NERDTreeToggle<CR>
+noremap <F3> :CtrlPBuffer<CR>
+nmap<F4> <Plug>CtrlSFQuickfixPrompt
+vmap <F4> <Plug>CtrlSFQuickfixVwordExec
+nmap <F5> <Plug>CtrlSFPrompt
+vmap <F5> <Plug>CtrlSFVwordExec
 noremap <F10> :vertical wincmd f<CR>
-noremap <F11> :BufSurfBack<cr>
-noremap <F12> :BufSurfForward<cr>
+noremap <F11> :BufSurfBack<CR>
+noremap <F12> :BufSurfForward<CR>
 
 " NERDTree in a buffer (like netrw)
-nnoremap <silent>- :silent edit %:p:h<cr>
-nnoremap <silent>_ :silent edit .<cr>
+nnoremap <silent>- :silent edit %:p:h<CR>
+nnoremap <silent>_ :silent edit .<CR>
 
 " Clear the search highlight
-noremap <silent><leader>\ :nohlsearch<cr>
+noremap <silent><leader>\ :nohlsearch<CR>
 
 " Remove whitespace
-noremap <silent><leader>CW :%s/\s\+$//<cr>:let @/=''<cr>:nohlsearch<cr>
+noremap <silent><leader>CW :%s/\s\+$//<CR>
 
 " Yank/paste contents using an unnamed register
 vnoremap <silent><leader>y "xy
@@ -197,7 +209,7 @@ noremap <silent><leader>p "xp
 
 " Filetypes
 " -----------------------------------------------------------------------------
-func Eatchar(pat)
+func! Eatchar(pat)
   let c = nr2char(getchar(0))
   return (c =~ a:pat) ? '' : c
 endfunc
@@ -225,10 +237,10 @@ if has("autocmd")
     autocmd FileType go nmap <Leader>e <Plug>(go-rename)
 
     " Abbreviations
+    autocmd FileType css iabbrev <buffer> bgc background-color:
     autocmd FileType sass iabbrev <buffer> bgc background-color:
     autocmd FileType coffee iabbrev <buffer> cdl console.log
     autocmd FileType javascript iabbrev <buffer> cdl console.log()<Left><C-R>=Eatchar('\s')<CR>
-    autocmd FileType * iabbrev <buffer> lrm Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   augroup END
 endif
 
