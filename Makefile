@@ -1,19 +1,18 @@
-#/ update          Runs all of the update commands
-update:
-	@./bin/update world
+#/ help            List all bin commands and make targets
+help:
+	@./bin/help world makefile
 
 #/ install         Runs all of the install commands
 install:
 	@./bin/install world
 
-#/ help            List all bin commands and make targets
-help:
-	@./bin/help world makefile
+#/ update          Runs all of the update commands
+update:
+	@./bin/update world
 
-#/ reinstall_vim   Uninstalls and reinstall's Vim
-reinstall_vim:
-	@./bin/uninstall vim
-	@./bin/install vim
+#/ uninstall       Remove all the crap that was installed
+uninstall:
+	@./bin/uninstall world
 
-.PHONY: update install help reinstall_vim
+.PHONY: help install update uninstall
 

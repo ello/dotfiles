@@ -1,5 +1,4 @@
-![ello](http://d324imu86q1bqn.cloudfront.net/uploads/user/avatar/641/large_Ello.1000x1000.png
-"ello")
+![ello](https://avatars3.githubusercontent.com/u/13344279?v=3&s=120 "ello")
 
 We &hearts; the Vim.
 
