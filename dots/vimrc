@@ -15,6 +15,7 @@ Plug 'ervandew/supertab'
 Plug 'scrooloose/syntastic'
 Plug 'mkitt/tabline.vim'
 Plug 'ton/vim-bufsurf'
+Plug 'mhinz/vim-grepper'
 Plug 'henrik/vim-indexed-search'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'nelstrom/vim-visual-star-search'
@@ -111,14 +112,8 @@ if v:version > 703 || v:version == 703 && has("patch541")
   set formatoptions+=j
 endif
 
-func! s:AgHighlight(args)
-  let @/ = matchstr(a:args, "\\v(-)\@<!(\<)\@<=\\w+|['\"]\\zs.{-}\\ze['\"]")
-  call feedkeys(":let &hlsearch=1 \| echo \<CR>", 'n')
-endfunc
-
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
-  command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|botright cwindow|redraw!|:call s:AgHighlight(<q-args>)
   let g:ctrlp_user_command='ag -Q -l --nocolor --ignore vendor/bundle -g "" %s'
   let g:ctrlp_use_caching=0
 endif
@@ -127,10 +122,10 @@ let g:ctrlp_by_filename=1
 let g:ctrlp_extensions=['line']
 let g:ctrlp_cache_dir=$HOME.'/.vim/tmp/ctrlp/'
 let g:ctrlp_custom_ignore='vendor/bundle\|.sass-cache\|.bundle\|tmp\|.git$'
+let g:ctrlp_map='<F1>'
 
 let g:ctrlsf_auto_close=0
 let g:ctrlsf_context='-C 1'
-let g:ctrlsf_populate_qflist=1
 
 let g:netrw_liststyle=3
 
@@ -140,9 +135,9 @@ let g:NERDTreeAutoDeleteBuffer=1
 let g:NERDTreeMapUpdir='-'
 
 let g:SuperTabLongestEnhanced=1
-let g:SuperTabLongestHighlight=0
+let g:SuperTabLongestHighlight=1
 
-" Open quick fix and location windows with ctrlp commands
+" Open quick fix and location window items with CtrlP commands
 let g:qfenter_enable_autoquickfix=0
 let g:qfenter_vopen_map=['<C-v>']
 let g:qfenter_hopen_map=['<C-CR>', '<C-s>', '<C-x>']
@@ -163,7 +158,6 @@ let g:indexed_search_colors=0
 
 let g:javascript_enable_domhtmlcss=1
 let g:jsx_ext_required=0
-
 let g:coffee_compile_vert=1
 
 " Mappings
@@ -172,20 +166,25 @@ let g:coffee_compile_vert=1
 nnoremap j gj
 nnoremap k gk
 
-" Visually select the text that was last edited/pasted
-nnoremap gV `[v`]
-
 " Move between splits
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
+" NERDTree in a buffer (like netrw)
+nnoremap <silent>- :silent edit %:p:h<CR>
+nnoremap <silent>_ :silent edit .<CR>
+
+" Override jumplist commands
+nnoremap <silent><C-i> :BufSurfBack<CR>
+nnoremap <silent><C-o> :BufSurfForward<CR>
+
 " Function keys
 let g:ctrlp_map='<F1>'
 noremap <F2> :NERDTreeToggle<CR>
 noremap <F3> :CtrlPBuffer<CR>
-nmap<F4> <Plug>CtrlSFQuickfixPrompt
+nmap <F4> <Plug>CtrlSFQuickfixPrompt
 vmap <F4> <Plug>CtrlSFQuickfixVwordExec
 nmap <F5> <Plug>CtrlSFPrompt
 vmap <F5> <Plug>CtrlSFVwordExec
@@ -193,9 +192,19 @@ noremap <F10> :vertical wincmd f<CR>
 noremap <F11> :BufSurfBack<CR>
 noremap <F12> :BufSurfForward<CR>
 
-" NERDTree in a buffer (like netrw)
-nnoremap <silent>- :silent edit %:p:h<CR>
-nnoremap <silent>_ :silent edit .<CR>
+" The `g` commands (testing)
+nnoremap <silent>gF :vertical wincmd f<CR>
+nnoremap <silent>gL :CtrlPBuffer<CR>
+nnoremap <silent>gl :CtrlP<CR>
+nnoremap gS :Ag<space>
+nmap gs <Plug>CtrlSFQuickfixPrompt
+vmap gs <Plug>CtrlSFQuickfixVwordExec
+nmap gz <Plug>CtrlSFPrompt
+vmap gz <Plug>CtrlSFVwordExec
+nnoremap <silent>gy :NERDTreeToggle<CR>
+
+" Visually select the text that was last edited/pasted
+nnoremap <silent>gV `[v`]
 
 " Clear the search highlight
 noremap <silent><leader>\ :nohlsearch<CR>
