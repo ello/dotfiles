@@ -172,6 +172,9 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
+" Another alternative mapping
+nnoremap <silent><C-@> :CtrlP<CR>
+
 " NERDTree in a buffer (like netrw)
 nnoremap <silent>- :silent edit %:p:h<CR>
 nnoremap <silent>_ :silent edit .<CR>
