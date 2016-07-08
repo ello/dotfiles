@@ -197,14 +197,13 @@ noremap <F12> :BufSurfForward<CR>
 
 " The `g` commands (testing)
 nnoremap <silent>gF :vertical wincmd f<CR>
-nnoremap <silent>gL :CtrlPBuffer<CR>
 nnoremap <silent>gl :CtrlP<CR>
-nnoremap gS :Ag<space>
+nnoremap <silent>gL :CtrlPBuffer<CR>
+nnoremap <silent>gy :NERDTreeToggle<CR>
 nmap gs <Plug>CtrlSFQuickfixPrompt
 vmap gs <Plug>CtrlSFQuickfixVwordExec
 nmap gz <Plug>CtrlSFPrompt
 vmap gz <Plug>CtrlSFVwordExec
-nnoremap <silent>gy :NERDTreeToggle<CR>
 
 " Visually select the text that was last edited/pasted
 nnoremap <silent>gV `[v`]
