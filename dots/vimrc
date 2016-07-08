@@ -226,6 +226,7 @@ endfunc
 if has("autocmd")
   augroup FTOptions
     autocmd!
+    autocmd QuickFixCmdPost *grep* botright copen
     autocmd BufNewFile,BufReadPost *.md set filetype=markdown
     autocmd FileType markdown,text,txt setlocal tw=80 linebreak nolist wrap spell
     autocmd BufRead,BufNewFile .{babel,eslint}rc set filetype=json
