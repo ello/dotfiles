@@ -13,13 +13,10 @@ run() {
 
 #/ vim             Message instructions to update the Vim plugins
 vim() {
-  printf "%s----------------------------------------\n"
+  printf "%s-----------------------------------\n"
   printf "%sUpdate Vim plugins:\n"
-  printf "%s:PlugClean!\n"
-  printf "%s:PlugUpgrade\n"
-  printf "%s:PlugUpdate\n"
-  printf "%s:PlugDiff\n"
-  printf "%s----------------------------------------\n"
+  printf "%sPlugUpgrade, PlugUpdate, PlugClean!\n"
+  printf "%s-----------------------------------\n"
 }
 
 #/ world           Runs all of the update commands

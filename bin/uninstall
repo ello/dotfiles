@@ -32,11 +32,17 @@ dots() {
   done
 }
 
+#/ xcode           Uninstalls custom Xcode files
+xcode() {
+  rm -rfv $HOME/Library/Developer/Xcode/UserData/FontAndColorThemes
+}
+
 #/ world           Runs all of the uninstall commands
 world() {
   vim
   dots
   bash
+  xcode
 }
 
 # go..

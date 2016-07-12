@@ -1,7 +1,7 @@
 eval "$(rbenv init -)"
 
 # Environment pathing and editor defaults
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/heroku/bin:$PATH"
+export PATH="/usr/local/bin:/usr/local/heroku/bin:$PATH"
 export ARCHFLAGS="-arch i386 -arch x86_64"
 export HISTCONTROL=ignoreboth
 export HISTFILESIZE=10000
@@ -11,22 +11,21 @@ unset MAILCHECK
 # Add some color to man pages
 export LESS_TERMCAP_md="$(tput setaf 4)"
 
+# Without comment
+export EDITOR=vim
 
 # Use MacVim's version of the Vim executable instead of the systems
 if [ -e /usr/local/bin/brew ]; then
   export MACVIM_BASE=`brew --cellar macvim`
   export MACVIM_VERSION=`brew list --versions macvim --compact | cut -d ' ' -f 2`
   alias vim="$MACVIM_BASE/$MACVIM_VERSION/MacVim.app/Contents/MacOS/Vim"
+  export EDITOR="$MACVIM_BASE/$MACVIM_VERSION/MacVim.app/Contents/MacOS/Vim"
 fi
-
-export EDITOR=vim
-
 
 # http://ss64.com/bash/shopt.html
 shopt -s histappend
 shopt -s nocaseglob
 shopt -s cdspell
-
 
 # Prompts
 # ------------------------------------------
