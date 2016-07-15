@@ -1,4 +1,5 @@
 eval "$(rbenv init -)"
+eval "$(exenv init -)"
 
 # Environment pathing and editor defaults
 export PATH="/usr/local/bin:/usr/local/heroku/bin:$PATH"
@@ -74,8 +75,8 @@ parse_git_branch() {
   __git_ps1 " [%s]"
 }
 
-parse_ruby_version() {
-  echo " [$(rbenv version-name)]"
+parse_versions() {
+  echo " [rb:$(rbenv version-name)|ex:$(exenv version-name)]"
 }
 
 settitle() {
@@ -83,7 +84,7 @@ settitle() {
 }
 
 export GIT_PS1_SHOWDIRTYSTATE='true'
-export PS1="\[\033[35m\][\h\[\033[00m\]\[\033[35m\]] \[\033[34m\]\W\[\033[32m\]\$(parse_ruby_version)\[\033[31m\]\$(parse_git_branch)\[\033[00m\] \[\033[0m\]"
+export PS1="\[\033[35m\][\h\[\033[00m\]\[\033[35m\]] \[\033[34m\]\W\[\033[32m\]\$(parse_versions)\[\033[31m\]\$(parse_git_branch)\[\033[00m\] \[\033[0m\]"
 export PS2="\[\033[35m\]→ \[\033[0m\]"
 
 
