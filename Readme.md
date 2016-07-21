@@ -12,6 +12,12 @@ want to back up existing files.**
 - cd to the dotfiles directory and `bin/install world`
 - Set reasonable [OSX defaults][osxdefaults]
 
+2. Ruby (optional; if you want to use the built-in [Rbenv](https://github.com/rbenv/rbenv) support)
+- `brew install rbenv ruby-build`
+
+2. Elixir (optional; if you want to use the built-in [Exenv](https://github.com/mururu/exenv) support)
+- `brew install exenv elixir-build`
+
 ## Settings
 
 ### Rock a sweet Bash setup
