@@ -232,6 +232,7 @@ if has("autocmd")
     autocmd BufNewFile,BufReadPost *.md set filetype=markdown
     autocmd FileType markdown,text,txt setlocal tw=80 linebreak nolist wrap spell
     autocmd BufRead,BufNewFile .{babel,eslint}rc set filetype=json
+    autocmd BufRead,BufNewFile Dangerfile set filetype=ruby
 
     " vim-go keybindings
     autocmd FileType go nmap <leader>r <Plug>(go-run)
