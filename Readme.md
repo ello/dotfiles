@@ -31,6 +31,7 @@ set:
       export GIT_AUTHOR_EMAIL='your@email'
       export GIT_COMMITTER_NAME='Your Name'
       export GIT_COMMITTER_EMAIL='your@email'
+      export GIT_SIGNING_KEY='your-key'
       export GITHUB_USER='Your GitHub Username'
 
 Since the `.gitconfig` file does not contain any user info, these are
@@ -52,6 +53,14 @@ There is an [issue with supertab][st162] that effects our setup. Applying the
 patch listed in the [issue][st162] gets around it for now. [Related][st158].
 
 ## Tips
+
+### GPG
+
+You will need to install GPG Keychain for GPG signing to happen automatically.
+See [GPG Tools](https://gpgtools.org/) for more information. There are ways to
+do this through homebrew, but the setup is a bit much. To obtain your GPG
+signing key you can either open up GPG Keychain, or run `gpg --list-keys` and
+add this to the `GIT_SIGNING_KEY` in your `.bashrc.local` file.
 
 ### Install polarized terminal theme
 
