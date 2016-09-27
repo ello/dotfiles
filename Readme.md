@@ -62,6 +62,15 @@ do this through homebrew, but the setup is a bit much. To obtain your GPG
 signing key you can either open up GPG Keychain, or run `gpg --list-keys` and
 add this to the `GIT_SIGNING_KEY` in your `.bashrc.local` file.
 
+You will also need to make your GPG signing key the primary one. You can do this
+by opening up GPG Keychain and doing these steps:
+
+- select your key 
+- hit the details button
+- select User IDs from the menu
+- right click on your user id and select primary
+- select 'save to keychain' when the dialog pops up
+
 ### Install Polarized terminal themes
 
 Included in the vimrc is `Plug mkitt/pigment`. This is the color settings for
