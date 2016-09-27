@@ -9,7 +9,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'mkitt/polarized'
+Plug 'mkitt/pigment'
 Plug 'yssl/QFEnter'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/syntastic'
@@ -263,8 +263,7 @@ endif
 
 " Theme
 " -----------------------------------------------------------------------------
-set background=dark
-colorscheme polarized
+colorscheme pigment
 
 " Load user config
 " -----------------------------------------------------------------------------
