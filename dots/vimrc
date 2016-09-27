@@ -192,8 +192,8 @@ nnoremap <silent><C-o> :BufSurfForward<CR>
 let g:ctrlp_map='<F1>'
 noremap <F2> :NERDTreeToggle<CR>
 noremap <F3> :CtrlPBuffer<CR>
-nnoremap <F4> :Ag<space>
-xnoremap <F4> y:<c-u>Ag -Q <C-R>=shellescape(expand(@"),1)<CR>
+nnoremap <F4> :GrepperAg<space>
+xnoremap <F4> y:<c-u>GrepperAg -Q <C-R>=shellescape(expand(@"),1)<CR>
 nmap <F5> <Plug>CtrlSFPrompt
 vmap <F5> <Plug>CtrlSFVwordExec
 noremap <F10> :vertical wincmd f<CR>
@@ -205,8 +205,8 @@ nnoremap <silent>gF :vertical wincmd f<CR>
 nnoremap <silent>gl :CtrlP<CR>
 nnoremap <silent>gL :CtrlPBuffer<CR>
 nnoremap <silent>gy :NERDTreeToggle<CR>
-nnoremap gs :Ag<space>
-xnoremap gs y:<c-u>Ag -Q <C-R>=shellescape(expand(@"),1)<CR>
+nnoremap gs :GrepperAg<space>
+xnoremap gs y:<c-u>GrepperAg -Q <C-R>=shellescape(expand(@"),1)<CR>
 nmap gz <Plug>CtrlSFPrompt
 vmap gz <Plug>CtrlSFVwordExec
 
