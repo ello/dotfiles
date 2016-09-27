@@ -62,11 +62,17 @@ do this through homebrew, but the setup is a bit much. To obtain your GPG
 signing key you can either open up GPG Keychain, or run `gpg --list-keys` and
 add this to the `GIT_SIGNING_KEY` in your `.bashrc.local` file.
 
-### Install polarized terminal theme
+### Install Polarized terminal themes
 
-Included is a `polarized.terminal` color theme. Import this theme into Apple's
-Terminal.app and set it as the default. You can also find it at the original
-[polarized][polarized] repository.
+Included in the vimrc is `Plug mkitt/pigment`. This is the color settings for
+Vim. Any color profile should work with this theme including the defaults from
+Apple. Included from the [pigment][pigment] repository is the Polarized light
+and dark profiles. Import these profiles into Apple's Terminal.app and set one
+as the default. They should be found in:
+
+```
+~/.vim/plugged/pigment/profiles/
+```
 
 ### Turn caps lock into the control key
 
@@ -92,7 +98,7 @@ Vim, install the [SIMBL][simbl] [MouseTerm][mouseterm] plug-in.
 [rbenv]: https://github.com/rbenv/rbenv
 [simbl]: http://www.culater.net/software/SIMBL/SIMBL.php
 [vim-plug]: https://github.com/junegunn/vim-plug
-[polarized]: https://github.com/mkitt/polarized
+[pigment]: https://github.com/mkitt/pigment
 [vimrc]: /dots/vimrc
 [st158]: https://github.com/ervandew/supertab/issues/158
 [st162]: https://github.com/ervandew/supertab/issues/162
