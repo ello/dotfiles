@@ -20,6 +20,7 @@
   del = !FILES=$(git ls-files --deleted) && git rm $FILES
   empty = commit --allow-empty -m
   glog = log --pretty='format:%d %Cgreen%h%Creset %an - %s' --graph
+  clog = log --pretty='- [x] %h %s'
 [help]
   autocorrect = 1
 [push]
