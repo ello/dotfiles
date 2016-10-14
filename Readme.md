@@ -24,20 +24,20 @@ The Bash setup is fairly bare bones out of the box. To override or add
 any additional settings create a `~/.bashrc.local` file and add
 any customization.
 
-Within this file you should have the following environment variables
-set:
-
-      export GIT_AUTHOR_NAME='Your Name'
-      export GIT_AUTHOR_EMAIL='your@email'
-      export GIT_COMMITTER_NAME='Your Name'
-      export GIT_COMMITTER_EMAIL='your@email'
-      export GIT_SIGNING_KEY='your-key'
-      export GITHUB_USER='Your GitHub Username'
-
-Since the `.gitconfig` file does not contain any user info, these are
-required to identify who you are. 
-
 The default Bash settings support the [rbenv][rbenv] environment.
+
+### Git credentials
+To setup your git credentials correctly you'll need to add a `.gitconfig.local`
+file to your `$HOME` directory and add the following:
+
+```
+[user]
+  name = YOUR_GIT_AUTHOR_NAME
+  email = YOUR_GIT_AUTHOR_EMAIL
+  signingKey = YOUR_GIT_SIGNING_KEY
+[github]
+  user = YOUR_GITHUB_USERNAME
+```
 
 ### Override Vim settings
 

@@ -37,7 +37,6 @@
   trustExitCode = false
 [rerere]
   enabled = 1
-
 [filter "media"]
   required = true
   clean = git media clean %f
@@ -45,8 +44,10 @@
 
 [interactive]
   diffFilter = diff-highlight
-
 [commit]
   gpgsign = true
 [gpg]
   program = /usr/local/bin/gpg
+[include]
+  path = ~/.gitconfig.local
+
