@@ -70,6 +70,14 @@ by opening up GPG Keychain and doing these steps:
 - select User IDs from the menu
 - right click on your user id and select primary
 - select 'save to keychain' when the dialog pops up
+- and add this to your .gitconfig.local:
+
+```
+[commit]
+  gpgsign = true
+[gpg]
+  program = /usr/local/bin/gpg
+```
 
 ### Install Polarized terminal themes
 
