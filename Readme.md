@@ -6,14 +6,15 @@ We &hearts; the Vim.
 **Warning this will blow away any vim/bash setups you have currently. You may
 want to back up existing files.**
 
-- `xcode-select --install`
-- `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
-- `brew install git`
-- cd to the dotfiles directory and `bin/install world`
+- Xcode should be installed on your system from the App Store
+- Install Xcode command line tools by running `xcode-select --install` in a terminal window
+- Install Homebrew if you don't already by running `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` in a terminal window
+- Make sure you have git installed by running `brew install git` in a terminal window
+- Make sure you have silver searcher installed by running `brew install the_silver_searcher` in a terminal window
+- In a terminal window cd to the dotfiles directory and run `bin/install world`
+- A helpful way to reload the terminal once the dotfiles are installed and terminal has been relaunched is to run our alias `reload` in a terminal window (this only effects reloading of the current window not all terminal windows)
 - Set reasonable [OSX defaults][osxdefaults]
-
 - Ruby (optional; if you want to use the built-in [Rbenv](https://github.com/rbenv/rbenv) support): `brew install rbenv ruby-build`
-
 - Elixir (optional; if you want to use the built-in [Exenv](https://github.com/mururu/exenv) support): `brew install exenv elixir-build`
 
 ## Settings
@@ -34,7 +35,6 @@ file to your `$HOME` directory and add the following:
 [user]
   name = YOUR_GIT_AUTHOR_NAME
   email = YOUR_GIT_AUTHOR_EMAIL
-  signingKey = YOUR_GIT_SIGNING_KEY
 [github]
   user = YOUR_GITHUB_USERNAME
 ```
@@ -48,13 +48,20 @@ Vim is setup with [vim-plug][vim-plug] as it's plugin manager. The default
 plugins are enabled within the [.vimrc][vimrc] file. To load localized plugins
 add them to a `~/.vimrc.bundles` file.
 
+To install the plugins open up vim by running `vim` in a terminal window and
+then typing `:PlugInstall`. If you get an error while opening up vim about not
+being able to find `colorscheme pigment` that's ok as the `:PlugInstall` will
+fix this for the next time you launch vim.
+
 #### Patch SuperTab inserts new line bug
 There is an [issue with supertab][st162] that effects our setup. Applying the
-patch listed in the [issue][st162] gets around it for now. [Related][st158].
+patch listed in the [issue][st162] gets around it for now. [Related][st158]. You
+will need to modify the supertab.vim file that lives inside your vim plugins
+dir `~/.vim/plugged/supertab/plugin/supertab.vim` for this patch.
 
 ## Tips
 
-### GPG
+### GPG (Optional)
 
 You will need to install GPG Keychain for GPG signing to happen automatically.
 See [GPG Tools](https://gpgtools.org/) for more information. There are ways to
@@ -73,6 +80,8 @@ by opening up GPG Keychain and doing these steps:
 - and add this to your .gitconfig.local:
 
 ```
+[user]
+  signingKey = YOUR_GIT_SIGNING_KEY
 [commit]
   gpgsign = true
 [gpg]
