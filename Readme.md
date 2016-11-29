@@ -10,7 +10,7 @@ want to back up existing files.**
 - Install Xcode command line tools by running `xcode-select --install` in a terminal window
 - Install Homebrew if you don't already by running `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` in a terminal window
 - Make sure you have git installed by running `brew install git` in a terminal window
-- Make sure you have silver searcher installed by running `brew install the_silver_searcher` in a terminal window
+- Make sure you have ripgrep installed by running `brew install ripgrep` in a terminal window
 - In a terminal window cd to the dotfiles directory and run `bin/install world`
 - A helpful way to reload the terminal once the dotfiles are installed and terminal has been relaunched is to run our alias `reload` in a terminal window (this only effects reloading of the current window not all terminal windows)
 - Set reasonable [OSX defaults][osxdefaults]
