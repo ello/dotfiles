@@ -53,12 +53,6 @@ then typing `:PlugInstall`. If you get an error while opening up vim about not
 being able to find `colorscheme pigment` that's ok as the `:PlugInstall` will
 fix this for the next time you launch vim.
 
-#### Patch SuperTab inserts new line bug
-There is an [issue with supertab][st162] that effects our setup. Applying the
-patch listed in the [issue][st162] gets around it for now. [Related][st158]. You
-will need to modify the supertab.vim file that lives inside your vim plugins
-dir `~/.vim/plugged/supertab/plugin/supertab.vim` for this patch.
-
 ## Tips
 
 ### GPG (Optional)
@@ -126,6 +120,4 @@ Vim, install the [SIMBL][simbl] [MouseTerm][mouseterm] plug-in.
 [vim-plug]: https://github.com/junegunn/vim-plug
 [pigment]: https://github.com/mkitt/pigment
 [vimrc]: /dots/vimrc
-[st158]: https://github.com/ervandew/supertab/issues/158
-[st162]: https://github.com/ervandew/supertab/issues/162
 
