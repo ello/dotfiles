@@ -123,7 +123,7 @@ endif
 let g:ctrlp_by_filename=1
 let g:ctrlp_extensions=['line']
 let g:ctrlp_cache_dir=$HOME.'/.vim/tmp/ctrlp/'
-let g:ctrlp_custom_ignore='vendor/bundle\|.bundle\|tmp\|.git$'
+let g:ctrlp_custom_ignore='vendor/bundle\|.bundle\|tmp\|spec/support/fixtures\|docs/api\|public/uploads\|.git$'
 let g:ctrlp_map='<F1>'
 
 let g:ctrlsf_auto_close=0
