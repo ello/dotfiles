@@ -32,6 +32,13 @@ bash() {
   done
 }
 
+#/ psql            Installs .bash_profile, .bashrc and .inputrc
+psql() {
+  for file in "psqlrc"; do
+    ln -sfv "`pwd`/dots/$file" $HOME/.$file
+  done
+}
+
 #/ dots            Installs ~/ .gemrc .gitconfig .gitignore .bundle/
 dots() {
   if [[ ! -d $HOME/.bundle ]]; then mkdir $HOME/.bundle;fi
@@ -53,6 +60,7 @@ world() {
   dots
   vim
   xcode
+  psql
 }
 
 # go..
