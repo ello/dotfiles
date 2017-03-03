@@ -36,6 +36,7 @@ Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-rails'
 Plug 'derekwyatt/vim-scala'
 Plug 'elixir-lang/vim-elixir'
+Plug 'hashivim/vim-terraform'
 
 " Utility
 Plug 'tpope/vim-fugitive'
