@@ -24,6 +24,13 @@ bash() {
   done
 }
 
+#/ psql            Removes .psqlrc
+bash() {
+  for file in "psqlrc"; do
+    rm -v $HOME/.$file
+  done
+}
+
 #/ dots            Removes ~/ .gemrc .gitconfig .gitignore .bundle/
 dots() {
   rm -rfv $HOME/.bundle
