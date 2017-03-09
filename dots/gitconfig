@@ -5,6 +5,7 @@
   ui = auto
 [core]
   excludesfile = ~/.gitignore
+  trustctime = false
 [alias]
   c = commit -a
   a = add
