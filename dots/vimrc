@@ -40,6 +40,7 @@ Plug 'hashivim/vim-terraform'
 
 " Utility
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 
 " Add local bundles
 if filereadable(expand("~/.vimrc.bundles"))
