@@ -249,6 +249,7 @@ if has("autocmd")
     autocmd FileType markdown,text,txt setlocal tw=80 linebreak nolist wrap spell
     autocmd BufNewFile,BufRead COMMIT_EDITMSG setlocal spell
     autocmd BufRead,BufNewFile .{babel,eslint}rc set filetype=json
+    autocmd BufRead,BufNewFile *.{flow} set filetype=javascript
     autocmd BufRead,BufNewFile Dangerfile set filetype=ruby
 
     " vim-go keybindings
